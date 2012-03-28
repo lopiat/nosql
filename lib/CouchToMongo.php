@@ -1,16 +1,17 @@
 <?php
 		require_once("class/couchdb.php");
 		require_once("config.php");
+		$couchdbname = "/" . $couchdb_dbname;
 		$baza = new CouchDB($couchdb_host, $couchdb_port);
 		$alldata = array();
 		$i=0;
 		if($baza->polacz()) {
 			echo "Polaczenie z CouchDb : " . $couchdb_host . ":" . $couchdb_port .  " -powiod³o siê\n\r";
 			$pos=false;
-			echo "Pobieram rekordy z bazy: " . $couchdb_newdbname . "\n\r";
+			echo "Pobieram rekordy z bazy: " . $couchdbname . "\n\r";
 			while(!$pos) {
 				$baza->polacz();
-				$resp = $baza->odpowiedz("GET", $couchdb_newdbname . "/" . $i);
+				$resp = $baza->odpowiedz("GET", $couchdbname . "/" . $i);
 				$pos = strpos($resp, "error");
 				$rt = json_decode($resp, true);
 				unset($rt["_id"]);

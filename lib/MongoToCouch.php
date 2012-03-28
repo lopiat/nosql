@@ -1,6 +1,8 @@
 <?php
 	require_once("class/couchdb.php");
 	require_once("config.php");
+	$couchdbname = "/" . $couchdb_dbname;
+	echo $couchdbname;
 	$alldata = array();
 	$connection = new Mongo($mongodb_cstring);
 	echo "Polaczono z MongoDB " . $mongodb_cstring . "\n\r";
@@ -19,18 +21,18 @@
 		$baza = new CouchDB($couchdb_host, $couchdb_port);
 		if($baza->polacz()) {
 			echo "Polaczenie z CouchDb : " . $couchdb_host . ":" . $couchdb_port .  " -powiod³o siê\n\r";
-			$resp = $baza->odpowiedz("PUT", $couchdb_newdbname);
+			$resp = $baza->odpowiedz("PUT", $couchdbname);
 			$pos = strpos($resp, "error");
 			if($pos) {
-				echo "Nie mozna utworzyc bazy:" . $couchdb_newdbname ."\n\r";
+				echo "Nie mozna utworzyc bazy:" . $couchdbname ."\n\r";
 				echo $resp;
 				die();
 			}
 			$baza->polacz();
-			echo "Zapisuje rekordy do bazy: " . $couchdb_newdbname . "\n\r";
+			echo "Zapisuje rekordy do bazy: " . $couchdbname . "\n\r";
 			for($i=0;$i<sizeof($alldata);$i++) {
 				$baza->polacz();
-				$resp = $baza->odpowiedz("PUT", $couchdb_newdbname . "/" . $i, json_encode($alldata[$i]));
+				$resp = $baza->odpowiedz("PUT", $couchdbname . "/" . $i, json_encode($alldata[$i]));
 				$pos = strpos($resp, "error");
 				if($pos) {
 					echo "Nie mozna dodac do bazy MongoDB";
