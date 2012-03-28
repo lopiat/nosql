@@ -1,24 +1,37 @@
-Repozytorium zawiera zbiór skryptów php umo¿liwiaj¹cych:
+Repozytorium zawiera zbiÃ³r skryptÃ³w php umoÅ¼liwiajÄ…cych:
 
 Przekonwertowanie danych z formatu CSV do JSON i zapisu w bazie CouchDB
+
 Przekonwertowanie danych z formatu CSV do JSON i zapisu w bazie MongoDB
+
 Przeniesienie bazy z CouchDB do MongoDB
+
 Przeniesienie bazy z MongoDB do CouchDB
 
-Wymagane dla prawid³owego dzia³ania:
+Wymagane dla prawidÅ‚owego dziaÅ‚ania:
+--------------------------------------------------------------------------------------------------------------------
 php.fcgi -zainstalowany na sigmie
+
 mongo.so -rozszerzenie dla bazy Mongo
-(Z racji na brak praw root na sigmie, wszystkie rozszerzenia potrzebne do uruchomienia znajduj¹ siê w katalogu extension z odpowiednio skonfigurowanym php.ini)
-konfiguracja config.php - opisane poni¿ej
+
+konfiguracja config.php - opisane poniÅ¼ej
 
 Uruchamianie:
+-------------------------------------------------------------------------------------------------------------------
 ./run.sh m1 - konwertuje dane z pliku imiona.csv i zapisuje w CouchDB
+
 ./run.sh m2 - konwertuje dane z pliku imiona.csv i zapisuje w MongoDB
+
 ./run.sh m3 - pobiera dane z bazy CouchDB i zapisuje do MongoDB
+
 ./run.sh m4 - pobiera dane z bazy MongoDB i zapisuje do CouchDB
 
-Przed uruchomieniem skryptu nale¿y odpowiednio skonfigurowaæ plik config.php (lib\config.php)
-Nale¿y ustawiæ kilka zmiennych:
+
+Przed uruchomieniem skryptu naleÅ¼y odpowiednio skonfigurowaÄ‡ plik config.php (lib\config.php)
+
+Konfiguracja pliku config.php
+----------------------------------------------------------------------------------------------------------------------------
+NaleÅ¼y ustawiÄ‡ kilka zmiennych:
 
 $csvfilename = nazwa pliku
 $couchdb_host = host dla couchDB
@@ -40,3 +53,11 @@ $mongodb_host = "localhost";
 $mongodb_port = "21139"; 
 $mongodb_dbname = "nosql";
 $mongodb_cname = "imiona";
+
+Inne
+-----------------------------------------------------------------------------------------------------------------------------
+Z racji na brak praw root na sigmie, wszystkie rozszerzenia potrzebne do uruchomienia znajdujÄ… siÄ™ w katalogu extension 
+
+z odpowiednio skonfigurowanym php.ini
+
+aby php na sigmie przeczytal rozszerzenie trzeba bylo rowniez skopiowax
