@@ -2,7 +2,7 @@
 	require_once("class/couchdb.php");
 	require_once("config.php");
 	$couchdbname = "/" . $couchdb_dbname;
-	echo $couchdbname;
+	$mongodb_cstring = "mongodb://" . $mongodb_host . ":" .  $mongodb_port;
 	$alldata = array();
 	$connection = new Mongo($mongodb_cstring);
 	echo "Polaczono z MongoDB " . $mongodb_cstring . "\n\r";

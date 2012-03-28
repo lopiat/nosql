@@ -1,0 +1,42 @@
+Repozytorium zawiera zbiór skryptów php umo¿liwiaj¹cych:
+
+Przekonwertowanie danych z formatu CSV do JSON i zapisu w bazie CouchDB
+Przekonwertowanie danych z formatu CSV do JSON i zapisu w bazie MongoDB
+Przeniesienie bazy z CouchDB do MongoDB
+Przeniesienie bazy z MongoDB do CouchDB
+
+Wymagane dla prawid³owego dzia³ania:
+php.fcgi -zainstalowany na sigmie
+mongo.so -rozszerzenie dla bazy Mongo
+(Z racji na brak praw root na sigmie, wszystkie rozszerzenia potrzebne do uruchomienia znajduj¹ siê w katalogu extension z odpowiednio skonfigurowanym php.ini)
+konfiguracja config.php - opisane poni¿ej
+
+Uruchamianie:
+./run.sh m1 - konwertuje dane z pliku imiona.csv i zapisuje w CouchDB
+./run.sh m2 - konwertuje dane z pliku imiona.csv i zapisuje w MongoDB
+./run.sh m3 - pobiera dane z bazy CouchDB i zapisuje do MongoDB
+./run.sh m4 - pobiera dane z bazy MongoDB i zapisuje do CouchDB
+
+Przed uruchomieniem skryptu nale¿y odpowiednio skonfigurowaæ plik config.php (lib\config.php)
+Nale¿y ustawiæ kilka zmiennych:
+
+$csvfilename = nazwa pliku
+$couchdb_host = host dla couchDB
+$couchdb_port = port dla couchDB
+$couchdb_dbname = nazwa bazy w couchdb jaka zostanie utworzona lub z jakiej zostana pobrane dane
+$mongodb_host = host dla mongoDB
+$mongodb_port = port dla mongoDB 
+$mongodb_dbname = nazwa bazy mongo jaka zostanie utworzona lub z jakiej zostana pobrane dane
+$mongodb_cname = nazwa kolekcji mongo jaka zostanie utworzona lub z jakiej zostana pobrane dane
+
+przyklad:
+
+$csvfilename = "imiona.csv";
+$couchdb_host = "sigma.ug.edu.pl";
+$couchdb_port = "41139";
+$couchdb_dbname = "imiona";
+$mongodb_cstring = "mongodb://localhost:21139";
+$mongodb_host = "localhost";
+$mongodb_port = "21139"; 
+$mongodb_dbname = "nosql";
+$mongodb_cname = "imiona";

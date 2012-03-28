@@ -21,7 +21,7 @@
 			array_push($alldata, $arr);
 		}
 		}
-		echo "Przekonwertowano : " . sizeof($alldata) . " linijek danych do formatu json";
+		echo "Przekonwertowano : " . sizeof($alldata) . " linijek danych do formatu json\n\r";
 		fclose($handle);
 		$baza = new CouchDB($couchdb_host, $couchdb_port);
 		if($baza->polacz()) {
