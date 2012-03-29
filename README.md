@@ -8,11 +8,13 @@ Przeniesienie bazy z CouchDB do MongoDB
 
 Przeniesienie bazy z MongoDB do CouchDB
 
+Skrypty sa przystosowane do działania na sigmie
+
 Wymagane dla prawidłowego działania:
 --------------------------------------------------------------------------------------------------------------------
-php.fcgi -zainstalowany na sigmie
+php.fcgi -zainstalowany na sigmie (brak polecenia php)
 
-mongo.so -rozszerzenie dla bazy Mongo
+mongo.so -rozszerzenie dla bazy Mongo 
 
 konfiguracja config.php - opisane poniżej
 
@@ -56,8 +58,7 @@ $mongodb_cname = "imiona";
 
 Inne
 -----------------------------------------------------------------------------------------------------------------------------
-Z racji na brak praw root na sigmie, wszystkie rozszerzenia potrzebne do uruchomienia znajdują się w katalogu extension 
-
-z odpowiednio skonfigurowanym php.ini
-
-aby php na sigmie nie zgłaszał  WARNINGS trzeba bylo skopiowac wszystkie rozszerzenia z katalogu domyslnego ztad tak duzy rozmiar archiwum 
+do kontroli nad bazą mongoDB wymagane jest rozszerzenie mongo.so
+jest ono w katalagu extension z odpowiednio skonfigurowanym php.ini
+serwer sigma po zmianie w php.ini zmiennej extension_dir zgłaszał ostrzezenia o braku innych bibliotek
+dlatego zostaly one rowniez dodane do repozytorium
