@@ -60,4 +60,4 @@ Z racji na brak praw root na sigmie, wszystkie rozszerzenia potrzebne do uruchom
 
 z odpowiednio skonfigurowanym php.ini
 
-aby php na sigmie przeczytal rozszerzenie trzeba bylo rowniez skopiowax
+aby php na sigmie nie zgłaszał  WARNINGS trzeba bylo skopiowac wszystkie rozszerzenia z katalogu domyslnego ztad tak duzy rozmiar archiwum 
