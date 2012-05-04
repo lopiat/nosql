@@ -35,11 +35,29 @@ echo './run.sh m4 - pobiera dane z bazy MongoDB i zapisuje do CouchDB'
 }
 
 couchtomongo() {
-php.fcgi lib/CouchToMongo.php
+if [ "$#" -lt 7 ]
+then
+echo -e 'Zle wywowolanie\nPrawidlowe: ./run.sh m3 couch_host couch_port couch_db mongo_host mongo_port mongo_db mongo_col\nPrzyklad: ./run.sh m3 localhost 5984 imiona localhost 27017 test imiona'  
+else
+export REDIRECT_STATUS=true
+export SCRIPT_FILENAME=lib/CouchToMongo.php
+export REQUEST_METHOD=GET
+export QUERY_STRING="&chost=$1&cport=$2&cdb=$3&mhost=$4&mport=$5&mdb=$6&mcol=$7"
+php.fcgi
+fi
 }
 
 mongotocouch() {
-php.fcgi lib/MongoToCouch.php
+if [ "$#" -lt 7 ]
+then
+echo -e 'Zle wywowolanie\nPrawidlowe: ./run.sh m3 couch_host couch_port couch_db mongo_host mongo_port mongo_db mongo_col\nPrzyklad: ./run.sh m3 localhost 5984 imiona localhost 27017 test imiona'  
+else
+export REDIRECT_STATUS=true
+export SCRIPT_FILENAME=lib/MongoToCouch.php
+export REQUEST_METHOD=GET
+export QUERY_STRING="&chost=$1&cport=$2&cdb=$3&mhost=$4&mport=$5&mdb=$6&mcol=$7"
+php.fcgi
+fi
 }
 
 if [ "$#" -lt 1 ]
@@ -49,8 +67,8 @@ else
 case $1 in 
 	"m1") csvtocouch $2 $3 $4 $5;;
 	"m2") csvtomongo $2 $3 $4 $5 $6;;
-	"m3") couchtomongo $2 $3 $4;;
-	"m4") mongotocouch $2 $2 $4;;
+	"m3") couchtomongo $2 $3 $4 $5 $6 $7 $8;;
+	"m4") mongotocouch $2 $3 $4 $5 $6 $7 $8;;
 	*) zlewywolanie;;
 esac
 fi

@@ -1,7 +1,11 @@
 <?php
 		require_once("class/couchdb.php");
-		require_once("config.php");
-		$couchdbname = "/" . $couchdb_dbname;
+		$couchdbname = "/" . $_GET["cdb"];
+		$couchdb_host = $_GET['chost'];
+		$couchdb_port = $_GET['cport'];
+		$mongodb_cstring = "mongodb://" . $_GET['mhost'] . ":" .  $_GET['mport'];
+		$mongodb_dbname = $_GET['mdb'];
+		$mongodb_cname = $_GET['mcol'];
 		$baza = new CouchDB($couchdb_host, $couchdb_port);
 		$alldata = array();
 		$i=0;

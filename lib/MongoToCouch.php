@@ -1,8 +1,11 @@
 <?php
 	require_once("class/couchdb.php");
-	require_once("config.php");
-	$couchdbname = "/" . $couchdb_dbname;
-	$mongodb_cstring = "mongodb://" . $mongodb_host . ":" .  $mongodb_port;
+	$couchdbname = "/" . $_GET["cdb"];
+	$couchdb_host = $_GET['chost'];
+	$couchdb_port = $_GET['cport'];
+	$mongodb_cstring = "mongodb://" . $_GET['mhost'] . ":" .  $_GET['mport'];
+	$mongodb_dbname = $_GET['mdb'];
+	$mongodb_cname = $_GET['mcol'];
 	$alldata = array();
 	$connection = new Mongo($mongodb_cstring);
 	echo "Polaczono z MongoDB " . $mongodb_cstring . "\n\r";
