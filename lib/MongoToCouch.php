@@ -7,6 +7,9 @@
 	$mongodb_dbname = $_GET['mdb'];
 	$mongodb_cname = $_GET['mcol'];
 	$alldata = array();
+	try {
+		$connection = new Mongo($mongodb_cstring);
+		if($connection !=null) {
 	$connection = new Mongo($mongodb_cstring);
 	echo "Polaczono z MongoDB " . $mongodb_cstring . "\n\r";
 	$db = $connection->selectDB($mongodb_dbname);
@@ -17,7 +20,6 @@
 		unset($obj["_id"]);
 		array_push($alldata, $obj);
 	}
-
 	echo "Pobrano: " . sizeof($alldata) . "rekordów z Bazy MongoDB\n\r"; 
 	$connection->close();			
 	if(sizeof($alldata) > 0) {
@@ -45,7 +47,13 @@
 			}
 			echo "Do bazy CouchDb zapisano:" . $i . " rekordow\n\r";
 	   }
-	}	
+		else echo "Problem z polaczeniem z CouchDb";
+	}
+	}
+	}
+	catch(Exception $e) {
+		echo "MongoDB blad zapisu: " .$e->getMessage();
+	}
 
 
 ?>

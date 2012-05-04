@@ -26,14 +26,23 @@
 		
 			echo "Pobrano: " . sizeof($alldata) . "rekordów z Bazy CouchDB\n\r"; 
 			if(sizeof($alldata) > 0) {
-				$connection = new Mongo($mongodb_cstring);
-				$db = $connection->selectDB($mongodb_dbname);
-				$db->selectCollection($mongodb_cname)->drop();
-				$db->createCollection($mongodb_cname);
-				for($i=0;$i<sizeof($alldata); $i++)
-				$db->selectCollection($mongodb_cname)->insert($alldata[$i]);
+				try {
+					$connection = new Mongo($mongodb_cstring);
+					if($connection !=null) {
+						$connection = new Mongo($mongodb_cstring);
+						$db = $connection->selectDB($mongodb_dbname);
+						$db->selectCollection($mongodb_cname)->drop();
+						$db->createCollection($mongodb_cname);
+						for($i=0;$i<sizeof($alldata); $i++)
+						$db->selectCollection($mongodb_cname)->insert($alldata[$i]);
+						echo "Do bazy MongoDb zapisano:" . $i . " rekordow\n\r";
+					}
+				}
+				catch(Exception $e) {
+					echo "MongoDB blad zapisu: " .$e->getMessage();
+				}
+				
 			}
-			echo "Do bazy MongoDb zapisano:" . $i . " rekordow\n\r";
 		}
 		else echo "Problem z polaczeniem z CouchDb";
 ?>
