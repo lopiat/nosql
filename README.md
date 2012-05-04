@@ -44,11 +44,52 @@ Mozliwe wywolania:
 
 couchdb-map-reduce.js
 -----------------------------------------------------------------------------------------------------------------------------
+Funkcje Map-Reduce dla CouchDB i bazy imiona.
 
+Przyklady
+
+Ilość imion żeńskich w bazie
+
+		http://localhost:5984/imiona/_design/app/_view/plec?key="K"
+Ilość imion męskich w bazie
+
+		http://localhost:5984/imiona/_design/app/_view/plec?key="M"
+Ilość imion w bazie majacych 4 sylaby
+
+		http://localhost:5984/imiona/_design/app/_view/sylaba?key="4"
+
+Ilość długość imienia
+
+		http://localhost:5984/imiona/_design/app/_view/dlugoscimienia?key="Marzena"
+
+Suma sylab w podanych imionach
+
+		http://localhost:5984/imiona/_design/app/_view/iloscsylab?startkey="Abadon"&endkey="Celina"
 
 
 mongo-map-reduce.js
 -----------------------------------------------------------------------------------------------------------------------------
+Funkcje Map-Reduce dla MongoDB i bazy imiona
+
+Ilość imion żeńskich w bazie
+
+		res = db.imiona.mapReduce(map1, reduce1,{out: { inline : 1}});
+
+Ilość imion męskich w bazie
+
+		res = db.imiona.mapReduce(map2, reduce1,{out: { inline : 1}});
+
+Średnia ilość sylab w imionach
+
+		res = db.imiona.mapReduce(map5, reduce2,{out: { inline : 1}});
+
+Ilość imion zawierających litere o
+
+		res = db.imiona.mapReduce(map4, reduce1,{out: { inline : 1}});
+
+Suma sylab w wszystkich imionach
+
+		res = db.imiona.mapReduce(map5, reduce1,{out: { inline : 1}});
 
 
 katalog lib
