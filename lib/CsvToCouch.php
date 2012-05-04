@@ -1,9 +1,10 @@
 <?php
 	require_once("class/couchdb.php");
-	require_once("config.php");
-	$file = "../dane/" . $csvfilename;
+	$file = "../" . $_GET['filename'];
 	$alldata = array();
-	$couchdbname = "/" . $couchdb_dbname;
+	$couchdb_host = $_GET['chost'];
+	$couchdb_port = $_GET['cport'];
+	$couchdbname = "/" . $_GET['cdb'];
 	$f=0;
 	$handle = fopen($file, "r");
 

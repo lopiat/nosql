@@ -1,9 +1,10 @@
 <?php
-	require_once("config.php");
-	$file = "../dane/" . $csvfilename;
+	$file = "../" . $_GET['filename'];
 	$alldata = array();
-	$mongodb_cstring = "mongodb://" . $mongodb_host . ":" .  $mongodb_port;
+	$mongodb_cstring = "mongodb://" . $_GET['mhost'] . ":" .  $_GET['mport'];
 	$f=0;
+	$mongodb_dbname = $_GET['mdb'];
+	$mongodb_cname = $_GET['mcol'];
 	$handle = fopen($file, "r");
 
 	if($handle !== FALSE) {
