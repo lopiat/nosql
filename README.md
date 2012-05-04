@@ -12,63 +12,31 @@ Skrypty sa przystosowane do działania na sigmie
 
 Wymagane dla prawidłowego działania:
 --------------------------------------------------------------------------------------------------------------------
-php.fcgi -zainstalowany na sigmie (brak polecenia php)
+php.fcgi -zainstalowany na sigmie (na sigmie brak polecenia php)
 
 mongo.so -rozszerzenie dla bazy Mongo 
 
-konfiguracja config.php - opisane poniżej
 
-Uruchamianie:
+run.sh
 -------------------------------------------------------------------------------------------------------------------
-./run.sh m1 - konwertuje dane z pliku imiona.csv i zapisuje w CouchDB
+ Mozliwe wywolania:
+1. Konwersja danych z pliku csv i zapis w CouchDB
 
-./run.sh m2 - konwertuje dane z pliku imiona.csv i zapisuje w MongoDB
+        /run.sh m1 nazwa_pliku host port baza (dane\imiona.csv,localhost,5984,imiona)
 
-./run.sh m3 - pobiera dane z bazy CouchDB i zapisuje do MongoDB
+2. Konwersja danych z pliku csv i zapis w MongoDB
 
-./run.sh m4 - pobiera dane z bazy MongoDB i zapisuje do CouchDB
+        /run.sh m2 nazwa_pliku host port baza kolekcja (dane\imiona.csv,localhost,27017,test,imiona)
 
+3. Pobiera dane z bazy CouchDB i zapisuje w MongoDB
 
-Przed uruchomieniem skryptu należy odpowiednio skonfigurować plik config.php (lib\config.php)
+        ./run.sh m3 couch_host couch_port couch_db mongo_host mongo_port mongo_db mongo_col
+        ./run.sh m3 localhost 5984 imiona localhost 27017 test imiona
 
-Konfiguracja pliku config.php
-----------------------------------------------------------------------------------------------------------------------------
-Należy ustawić kilka zmiennych:
+4. Pobiera dane z bazy MongoDB i zapisuje w CouchDB
 
-$csvfilename = nazwa pliku
-
-$couchdb_host = host dla couchDB
-
-$couchdb_port = port dla couchDB
-
-$couchdb_dbname = nazwa bazy w couchdb jaka zostanie utworzona lub z jakiej zostana pobrane dane
-$mongodb_host = host dla mongoDB
-
-$mongodb_port = port dla mongoDB 
-
-$mongodb_dbname = nazwa bazy mongo jaka zostanie utworzona lub z jakiej zostana pobrane dane
-
-$mongodb_cname = nazwa kolekcji mongo jaka zostanie utworzona lub z jakiej zostana pobrane dane
-
-przyklad:
-
-$csvfilename = "imiona.csv";
-
-$couchdb_host = "sigma.ug.edu.pl";
-
-$couchdb_port = "41139";
-
-$couchdb_dbname = "imiona";
-
-$mongodb_cstring = "mongodb://localhost:21139";
-
-$mongodb_host = "localhost";
-
-$mongodb_port = "21139"; 
-
-$mongodb_dbname = "nosql";
-
-$mongodb_cname = "imiona";
+        ./run.sh m4 couch_host couch_port couch_db mongo_host mongo_port mongo_db mongo_col
+        ./run.sh m4 localhost 5984 imiona localhost 27017 test imiona
 
 Inne
 -----------------------------------------------------------------------------------------------------------------------------
