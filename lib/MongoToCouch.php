@@ -20,12 +20,12 @@
 		unset($obj["_id"]);
 		array_push($alldata, $obj);
 	}
-	echo "Pobrano: " . sizeof($alldata) . "rekordów z Bazy MongoDB\n\r"; 
+	echo "Pobrano: " . sizeof($alldata) . "rekordÃ³w z Bazy MongoDB\n\r"; 
 	$connection->close();			
 	if(sizeof($alldata) > 0) {
 		$baza = new CouchDB($couchdb_host, $couchdb_port);
 		if($baza->polacz()) {
-			echo "Polaczenie z CouchDb : " . $couchdb_host . ":" . $couchdb_port .  " -powiod³o siê\n\r";
+			echo "Polaczenie z CouchDb : " . $couchdb_host . ":" . $couchdb_port .  " -powiodÅ‚o siÄ™\n\r";
 			$resp = $baza->odpowiedz("PUT", $couchdbname);
 			$pos = strpos($resp, "error");
 			if($pos) {

@@ -10,7 +10,7 @@
 		$alldata = array();
 		$i=0;
 		if($baza->polacz()) {
-			echo "Polaczenie z CouchDb : " . $couchdb_host . ":" . $couchdb_port .  " -powiod³o siê\n\r";
+			echo "Polaczenie z CouchDb : " . $couchdb_host . ":" . $couchdb_port .  " -powiodÅ‚o siÄ™\n\r";
 			$pos=false;
 			echo "Pobieram rekordy z bazy: " . $couchdbname . "\n\r";
 			while(!$pos) {
@@ -24,7 +24,7 @@
 				$i++;
 			}
 		
-			echo "Pobrano: " . sizeof($alldata) . "rekordów z Bazy CouchDB\n\r"; 
+			echo "Pobrano: " . sizeof($alldata) . "rekordÃ³w z Bazy CouchDB\n\r"; 
 			if(sizeof($alldata) > 0) {
 				try {
 					$connection = new Mongo($mongodb_cstring);

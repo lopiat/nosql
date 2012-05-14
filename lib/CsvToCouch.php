@@ -6,7 +6,12 @@
 	$couchdb_port = $_GET['cport'];
 	$couchdbname = "/" . $_GET['cdb'];
 	$f=0;
-	$handle = fopen($file, "r");
+	try {
+		$handle = fopen($file, "r");
+	}
+	catch(Exception $e) {
+	echo 'gg';
+	}
 
 	if($handle !== FALSE) {
 		while (($data = fgetcsv($handle, 2000, ";")) !== FALSE) {
@@ -26,7 +31,7 @@
 		fclose($handle);
 		$baza = new CouchDB($couchdb_host, $couchdb_port);
 		if($baza->polacz()) {
-			echo "Polaczenie z CouchDb : " . $couchdb_host . ":" . $couchdb_port .  " -powiod³o siê\n\r";
+			echo "Polaczenie z CouchDb : " . $couchdb_host . ":" . $couchdb_port .  " -powiodÅ‚o siÄ™\n\r";
 			$resp = $baza->odpowiedz("PUT", $couchdbname);
 			$pos = strpos($resp, "error");
 			if($pos) {
