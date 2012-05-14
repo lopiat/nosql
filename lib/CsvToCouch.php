@@ -1,6 +1,6 @@
 <?php
 	require_once("class/couchdb.php");
-	echo 'extension dir: ' . ini_get('extension_dir');
+	//echo 'extension dir: ' . ini_get('extension_dir');
 	$file = "../" . $_GET['filename'];
 	$alldata = array();
 	$couchdb_host = $_GET['chost'];
