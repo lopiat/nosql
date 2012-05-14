@@ -15,11 +15,8 @@ Wymagania: MongoDB  i CouchDB
 Instalacja:
  
 	git clone https://github.com/lopiat/nosql.git
-
 	cd nosql
-
 	chmod +x run.sh
-
 	uruchomić bazy 
 
 Mozliwe wywolania:
