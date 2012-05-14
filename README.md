@@ -43,16 +43,13 @@ Mozliwe wywolania:
 
 Instalacja i uruchomienie poza Sigma
 -------------------------------------------------------------------------------------------------------------------
-Wymagania: MongoDB,CouchDB,php5,php-cgi
+Wymagania: MongoDB,CouchDB,php5,php5-cgi
 
 Instalacja:
 
 	git clone https://github.com/lopiat/nosql.
-
 	cd nosql
-
 	chmod +x run2.sh
-
 	uruchomić bazy 
 
 Mozliwe wywolania:
