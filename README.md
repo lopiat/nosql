@@ -12,11 +12,14 @@ Instalacja i uruchomienie Sigma
 -------------------------------------------------------------------------------------------------------------------
 Wymagania: MongoDB  i CouchDB
 
-Instlacja:
+Instalacja:
  
 git clone https://github.com/lopiat/nosql.git
+
 cd nosql
+
 chmod +x run.sh
+
 uruchomić bazy 
 
 Mozliwe wywolania:
@@ -45,9 +48,12 @@ Instalacja i uruchomienie poza Sigma
 -------------------------------------------------------------------------------------------------------------------
 Wymagania: MongoDB,CouchDB,php5,php-cgi
 
-git clone https://github.com/lopiat/nosql.git
+git clone https://github.com/lopiat/nosql.
+
 cd nosql
+
 chmod +x run2.sh
+
 uruchomić bazy 
 
 Mozliwe wywolania:
