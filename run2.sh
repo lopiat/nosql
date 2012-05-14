@@ -36,7 +36,7 @@ export REDIRECT_STATUS=true
 export SCRIPT_FILENAME=lib/CsvToMongo.php
 export REQUEST_METHOD=GET
 export QUERY_STRING="filename=$1&mhost=$2&mport=$3&mdb=$4&mcol=$5"
-php
+php.cgi
 fi
 }
 
@@ -49,7 +49,7 @@ export REDIRECT_STATUS=true
 export SCRIPT_FILENAME=lib/CouchToMongo.php
 export REQUEST_METHOD=GET
 export QUERY_STRING="&chost=$1&cport=$2&cdb=$3&mhost=$4&mport=$5&mdb=$6&mcol=$7"
-php
+php.cgi
 fi
 }
 
@@ -62,7 +62,7 @@ export REDIRECT_STATUS=true
 export SCRIPT_FILENAME=lib/MongoToCouch.php
 export REQUEST_METHOD=GET
 export QUERY_STRING="&chost=$1&cport=$2&cdb=$3&mhost=$4&mport=$5&mdb=$6&mcol=$7"
-php
+php.cgi
 fi
 }
 
