@@ -74,7 +74,8 @@ Mozliwe wywolania:
         ./run2.sh m4 couch_host couch_port couch_db mongo_host mongo_port mongo_db mongo_col
         ./run2.sh m4 localhost 5984 imiona localhost 27017 test imiona
 
-W razie ostrzeżeń php należy przekopiować extension/mongo.so do lokalizacji wskazywanej przez zmieną php extension_dir i usunąć pliki php.ini
+W razie ostrzeżeń php należy przekopiować extension/mongo.so do lokalizacji wskazywanej przez zmieną php extension_dir  
+lub przekopiować rozszerzenia z ostrzeżen do lib/extension, lub zignorować
 
 couchdb-map-reduce.js
 -----------------------------------------------------------------------------------------------------------------------------
