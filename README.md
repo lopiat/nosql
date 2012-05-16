@@ -57,12 +57,12 @@ Mozliwe wywolania:
 1. Konwersja danych z pliku csv i zapis w CouchDB
 
         ./run2.sh m1 nazwa_pliku host port baza
-		./run2.sh m1 dane\imiona.csv localhost 5984 imiona 
+		./run2.sh m1 dane/imiona.csv localhost 5984 imiona 
 
 2. Konwersja danych z pliku csv i zapis w MongoDB
 
         ./run2.sh m2 nazwa_pliku host port baza kolekcja
-		./run2.sh m1 dane\imiona.csv localhost 27017 test imiona
+		./run2.sh m1 dane/imiona.csv localhost 27017 test imiona
 
 3. Pobiera dane z bazy CouchDB i zapisuje w MongoDB
 
@@ -75,9 +75,13 @@ Mozliwe wywolania:
         ./run2.sh m4 localhost 5984 imiona localhost 27017 test imiona
 
 W razie ostrzeżeń php o braku rozszerzeń należy przekopiować extension/mongo.so do lokalizacji otrzymanej w poleceniu
+	
 	echo "<?php echo ini_get('extension_dir') ?>" || php-cgi
+	
 nastepnie usunąć php.ini  
+
 lub przekopiować rozszerzenia z ostrzeżen do lib/extension
+
 lub zignorować
 
 couchdb-map-reduce.js
@@ -89,45 +93,203 @@ Przyklady
 Ilość imion żeńskich w bazie
 
 		http://localhost:5984/imiona/_design/app/_view/plec?key="K"
+
+Odpowiedz
+
+```json
+{"rows":[
+{"key":null,"value":673}
+]}
+```
+
 Ilość imion męskich w bazie
 
 		http://localhost:5984/imiona/_design/app/_view/plec?key="M"
+
+Odpowiedz
+
+```json
+{"rows":[
+{"key":null,"value":1039}
+]}
+```
+
 Ilość imion w bazie majacych 4 sylaby
 
 		http://localhost:5984/imiona/_design/app/_view/sylaba?key="4"
 
-Ilość długość imienia
+Odpowiedz
+
+```json
+{"rows":[
+{"key":null,"value":237}
+]}
+```
+
+Długość imienia
 
 		http://localhost:5984/imiona/_design/app/_view/dlugoscimienia?key="Marzena"
 
+Odpowiedz
+
+```json
+{"rows":[
+{"key":null,"value":7}
+]}
+```
+
 Suma sylab w podanych imionach
 
-		http://localhost:5984/imiona/_design/app/_view/iloscsylab?startkey="Abadon"&endkey="Celina"
+		http://localhost:5984/imiona/_design/app/_view/sumujSylaby?startkey="Abadon"&endkey="Celina"
 
+Odpowiedz
+
+```json
+{"rows":[
+{"key":null,"value":800}
+]}
+```
 
 mongo-map-reduce.js
 -----------------------------------------------------------------------------------------------------------------------------
+
 Funkcje Map-Reduce dla MongoDB i bazy imiona
 
 Ilość imion żeńskich w bazie
 
 		res = db.imiona.mapReduce(map1, reduce1,{out: { inline : 1}});
 
+Fragment odpowiedzi
+
+```json
+{
+	"results" : [
+		{
+			"_id" : "Abigail",
+			"value" : 1
+		},
+		{
+			"_id" : "Ada",
+			"value" : 1
+		},
+		{
+			"_id" : "Adamina",
+			"value" : 1
+		},
+		{
+			"_id" : "Adela",
+			"value" : 1
+		},
+		{
+			"_id" : "Adelajda",
+			"value" : 1
+		},
+		{
+			"_id" : "Adelina",
+			"value" : 1
+		},
+```
+
 Ilość imion męskich w bazie
 
 		res = db.imiona.mapReduce(map2, reduce1,{out: { inline : 1}});
 
-Średnia ilość sylab w imionach
+Fragment odpowiedzi
 
-		res = db.imiona.mapReduce(map5, reduce2,{out: { inline : 1}});
+```json
+{
+	"results" : [
+		{
+			"_id" : "Abdiasz",
+			"value" : 1
+		},
+		{
+			"_id" : "Abdon",
+			"value" : 1
+		},
+		{
+			"_id" : "Abel",
+			"value" : 1
+		},
+		{
+			"_id" : "Abercjusz",
+			"value" : 1
+		},
+		{
+			"_id" : "Abraham",
+			"value" : 1
+		},
+		{
+			"_id" : "Absalon",
+			"value" : 1
+		},
+		{
+			"_id" : "Achacjusz",
+			"value" : 1
+		},
+```
 
-Ilość imion zawierających litere o
+Ilość trzy sylabowych imion w bazie
+
+		res = db.imiona.mapReduce(map5, reduce1,{out: { inline : 1}});
+
+Fragment odpowiedzi
+
+```json
+{
+	"results" : [
+		{
+			"_id" : "Abercjusz",
+			"value" : 3
+		},
+		{
+			"_id" : "Abigail",
+			"value" : 3
+		},
+		{
+			"_id" : "Abraham",
+			"value" : 3
+		},
+		{
+			"_id" : "Absalon",
+			"value" : 3
+		},
+		{
+			"_id" : "Achacjusz",
+			"value" : 3
+		},
+```
+
+Ilość imion zawierających ciąg "la"
 
 		res = db.imiona.mapReduce(map4, reduce1,{out: { inline : 1}});
 
-Suma sylab w wszystkich imionach
+Odpowiedz
 
-		res = db.imiona.mapReduce(map5, reduce1,{out: { inline : 1}});
+```json
+{
+	"results" : [
+		{
+			"_id" : "Adela",
+			"value" : 1
+		},
+		{
+			"_id" : "Adelajda",
+			"value" : 1
+		},
+		{
+			"_id" : "Alan",
+			"value" : 1
+		},
+		{
+			"_id" : "Angela",
+			"value" : 1
+		},
+		{
+			"_id" : "Aniela",
+			"value" : 1
+		},
+```
 
 
 katalog lib
