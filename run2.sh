@@ -3,9 +3,9 @@
 zlewywolanie() {
 echo -e ' Wystapil blad\n Mozliwe wywolania:'
 echo '1. Konwersja danych z pliku csv i zapis w CouchDB'
-echo -e '\t/run.sh m1 nazwa_pliku host port baza (dane\imiona.csv,localhost,5984,imiona)'
+echo -e '\t/run.sh m1 nazwa_pliku host port baza (dane/imiona.csv,localhost,5984,imiona)'
 echo '2. Konwersja danych z pliku csv i zapis w MongoDB'
-echo -e '\t/run.sh m2 nazwa_pliku host port baza kolekcja (dane\imiona.csv,localhost,27017,test,imiona)'
+echo -e '\t/run.sh m2 nazwa_pliku host port baza kolekcja (dane/imiona.csv,localhost,27017,test,imiona)'
 echo '3. Pobiera dane z bazy CouchDB i zapisuje w MongoDB'
 echo -e '\t./run.sh m3 couch_host couch_port couch_db mongo_host mongo_port mongo_db mongo_col'
 echo -e '\t./run.sh m3 localhost 5984 imiona localhost 27017 test imiona'
