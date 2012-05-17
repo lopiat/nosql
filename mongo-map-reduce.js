@@ -27,7 +27,7 @@ reduce1 = function(key, values) {
 	var suma = 0;
 	for(i=0;i<values.length;i++) 
 		suma+=values[i];
-	return 5;
+	return suma;
 };
 
 reduce2 = function(key, values) {
