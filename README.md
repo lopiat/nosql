@@ -24,12 +24,12 @@ Mozliwe wywolania:
 1. Konwersja danych z pliku csv i zapis w CouchDB
 
         ./run.sh m1 nazwa_pliku host port baza
-		./run.sh m1 dane\imiona.csv localhost 5984 imiona 
+		./run.sh m1 dane/imiona.csv localhost 5984 imiona 
 
 2. Konwersja danych z pliku csv i zapis w MongoDB
 
         ./run.sh m2 nazwa_pliku host port baza kolekcja
-		./run.sh m1 dane\imiona.csv localhost 27017 test imiona
+		./run.sh m1 dane/imiona.csv localhost 27017 test imiona
 
 3. Pobiera dane z bazy CouchDB i zapisuje w MongoDB
 
